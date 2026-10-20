@@ -21,6 +21,8 @@ const languageFiles = fs
   .readdirSync(localesDir)
   .filter((file) => file !== "en.json");
 
+let hasErrors = false;
+
 languageFiles.forEach((file) => {
   const filePath = path.join(localesDir, file);
   const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
@@ -28,9 +30,12 @@ languageFiles.forEach((file) => {
   const valid = validate(jsonData);
 
   if (!valid) {
+    hasErrors = true;
     console.error(`Errors in ${file}:`);
     console.error(validate.errors);
   } else {
     console.log(`${file} is valid.`);
   }
 });
+
+if (hasErrors) process.exitCode = 1;
