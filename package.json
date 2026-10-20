@@ -23,6 +23,9 @@
   ],
   "email": "nayam.emikx@aleeas.com",
   "license": "AGPL-3.0",
+  "engines": {
+    "node": "18.x"
+  },
   "description": "Upscayl - Free and Open Source AI Image Upscaler",
   "keywords": [
     "AI",
@@ -68,7 +71,8 @@
     "dist:appstore": "CSC_KEY_PASSWORD=$PASSWORD CSC_LINK=$(openssl base64 -in $CERTIFICATE_PATH) npm run dist:mac-mas",
     "enable-store": "sed -i '' -e 's/APP_STORE_BUILD: false,/APP_STORE_BUILD: true,/' common/feature-flags.ts",
     "disable-store": "sed -i '' -e 's/APP_STORE_BUILD: true,/APP_STORE_BUILD: false,/' common/feature-flags.ts",
-    "validate-schema": "node scripts/validate-schema.js"
+    "validate-schema": "node scripts/validate-schema.js",
+    "test": "npm run tsc && node --test tests"
   },
   "build": {
     "productName": "Upscayl",
