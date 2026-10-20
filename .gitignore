@@ -44,6 +44,9 @@ yarn-error.log*
 repo/
 build-dir/
 
+#graphify
+graphify-out/
+
 #vscode
 .vscode/
 
